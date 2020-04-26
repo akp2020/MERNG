@@ -12,50 +12,6 @@ const _ = require('lodash');
 const Book = require("../model/book");
 const Author = require("../model/author");
 
-//dummy data
-/*const books = [{
-        id: 1,
-        name: "book1",
-        genre: "classic",
-		authorId: "11"
-    }, {
-        id: 3,
-        name: "book322",
-        genre: "music",
-		authorId: "21"
-    }, {
-        id: 2,
-        name: "book233",
-        genre: "movie",
-		authorId: "33"
-    }, {
-        id: 4,
-        name: "book422",
-        genre: "music",
-		authorId: "21"
-    }, {
-        id: 5,
-        name: "book533",
-        genre: "movie",
-		authorId: "33"
-    }
-]
-
-const authors = [{
-        name: "n1",
-        age: 23,
-        id: "11"
-    }, {
-        name: "n11",
-        age: 24,
-        id: "21"
-    }, {
-        name: "n13",
-        age: 22,
-        id: "33"
-    }
-]*/
-
 const AuthorType = new GraphQLObjectType({
         name: 'Author',
         fields: () => ({
@@ -165,13 +121,13 @@ const RootQuery = new GraphQLObjectType({
             },
 			books: {
 				type: new GraphQLList(BookType),
-				resolve(parent, args){
+				resolve(){
 					return Book.find({});
 				}
 			},
 			authors: {
 				type: new GraphQLList(AuthorType),
-				resolve(parent, args){
+				resolve(){
 					return Author.find({});
 				}
 			}
